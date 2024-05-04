@@ -28,7 +28,8 @@ class User2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*        dd($request->collect());*/
+        dd($request->input('users.*'));
     }
 
     /**
