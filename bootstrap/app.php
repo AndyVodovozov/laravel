@@ -17,7 +17,16 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        /*        $middleware->group('admin', [
+                    \App\Http\Middleware\EnsureTokenIsValid::class,
+                    \App\Http\Middleware\CheckRole::class,
+                ]);*/
+        //$middleware->appendToGroup('web', \App\Http\Middleware\CheckRole::class);
+        //$middleware->prependToGroup('web', 'role:admin,user');
+        //$middleware->web(remove: \Illuminate\Session\Middleware\StartSession::class);
+        /*        $middleware->alias([
+                    'role' => \App\Http\Middleware\CheckRole::class,
+                ]);*/
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
