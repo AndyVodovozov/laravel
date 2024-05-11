@@ -4,7 +4,6 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\User2Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureTokenIsValid;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*Route::get('/', function () {
@@ -26,11 +25,5 @@ Route::withoutMiddleware([Illuminate\Foundation\Http\Middleware\ValidateCsrfToke
             dd('Элемент не найден');
         });
 });
-Route::any('/', function (Request $request) {
-    if ($request->isMethod('POST')) {
-        dump('post');
-    }
-    if ($request->isMethod('GET')) {
-        dump('get');
-    }
-});
+
+Route::view('/', 'welcome')->name('welcome');

@@ -16,6 +16,17 @@
         </style>
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <a href="{{route('user.info', ['id'=>1])}}">ccskrf</a>
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <p>{{$error}}</p>
+        @endforeach
+    @endif
+    <form action="{{route('users.store')}}" method="post">
+        @csrf
+        <input type="text" name="user[name]" value="{{old('user.name')}}" >
+        @error('user.name'){{$message}} @enderror
+        <input type="email" name="user[email]" value="{{ old('user.email') }}">
+        <button type="submit">Отправить</button>
+    </form>
       </body>
 </html>

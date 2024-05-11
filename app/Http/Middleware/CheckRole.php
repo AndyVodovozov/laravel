@@ -15,7 +15,7 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
-        dump(request()->ips());
+        //dump(request()->ips());
 
         return $next($request);
     }

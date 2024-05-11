@@ -25,7 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ]);*/
         $middleware->append(CheckRole::class);
         //$middleware->prependToGroup('web', 'role:admin,user');
-        //$middleware->web(remove: \Illuminate\Session\Middleware\StartSession::class);
+        $middleware->web(remove: \Illuminate\Cookie\Middleware\EncryptCookies::class);
         /*        $middleware->alias([
                     'role' => \App\Http\Middleware\CheckRole::class,
                 ]);*/

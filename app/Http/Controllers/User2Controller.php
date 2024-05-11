@@ -29,7 +29,16 @@ class User2Controller extends Controller
     public function store(Request $request)
     {
         /*        dd($request->collect());*/
-        dd($request->input('users.*'));
+        //        if ($request->hasFile('image')) {
+        //            dd($request->file('image')->store('images', 'public'));
+        //        }
+
+        $request->validate([
+        ], [
+            //'name.required' => 'Имя обязательно',
+        ]);
+
+        return response()->json(User::all()->select('name', 'email'))->cookie('asdf', 'value', 5);
     }
 
     /**
