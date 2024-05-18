@@ -4,6 +4,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\User2Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureTokenIsValid;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*Route::get('/', function () {
@@ -26,4 +27,16 @@ Route::withoutMiddleware([Illuminate\Foundation\Http\Middleware\ValidateCsrfToke
         });
 });
 
-Route::view('/', 'welcome')->name('welcome');
+Route::view('/', 'index', ['user' => User::find(1)]);
+
+Route::get('/', function () {
+    $user = User::find(1);
+    \Illuminate\Support\Facades\Auth::login($user);
+    \Illuminate\Support\Facades\Session::put('status', 'active');
+
+    return view('index', ['user' => $user]);
+});
+
+Route::get('/contacts', function () {
+    return view('pages.contacts.index');
+});
